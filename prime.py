@@ -23,8 +23,9 @@ class PrestoFrame(wx.Frame):
         self.createToolBar()
         self.Bind(wx.EVT_CLOSE,self.OnCloseWindow)
         text = wx.StaticText(self.tool_pane,-1,"FILTERS",(10,20),(80,80))
-        self.State = "1"
+        self.State = "0"
         self.in_filename = None
+	self.filt_filename = 'C/filt_image.bmp'
         self.Show(True)
 
     def initStatusBar(self):
@@ -33,16 +34,16 @@ class PrestoFrame(wx.Frame):
     def menuData(self):
         data = [("&File",(
                   ("&Open",wx.ID_OPEN,"Open Image",self.OnOpen),
-                  ("&Save",wx.ID_SAVE,"Save Image",self.OnSaveAs),
+                  ("&Save",wx.ID_SAVE,"Save Image",self.OnSave),
                   ("&Save&As",wx.ID_SAVE,"Save Image As",self.OnSaveAs),
                   ("","","",""),
                   ("&Quit",wx.ID_EXIT,"Quit",self.OnCloseWindow))),
                 ("&Edit",(
-                  ("&Laplace",-1,"Add Verilog source files",self.OnOpen),
-                  ("&Gaussian",-1,"Remove Verilog source files",self.OnOpen),
-                  ("&Sobel",-1,"Add the system Configuration file",self.OnOpen),
-                  ("&Inverter",-1,"Clear the transcript window",self.OnOpen),
-                  ("&Thresholder",-1,"Remove all project files",self.OnOpen)
+                  ("&Laplace",-1,"Laplace Filter",self.OnOpen), 
+                  ("&Gaussian",-1,"Gaussian Filter",self.OnOpen),
+                  ("&Sobel",-1,"Sobel Filter",self.OnOpen),
+                  ("&Inverter",-1,"Inverter",self.OnOpen),
+                  ("&Thresholder",-1,"Thresholder",self.OnOpen)
                 )),
                 ("&About",(
                   ("&About",-1,"About",self.OnAbout),
@@ -85,18 +86,40 @@ class PrestoFrame(wx.Frame):
 	if self.in_filename:
             img = wx.Image(self.in_filename, wx.BITMAP_TYPE_ANY)
             imageCtrl = wx.StaticBitmap(self.image_pane, wx.ID_ANY,wx.BitmapFromImage(img))
-            self.State = "0"
         dlg.Destroy()
 
     def OnSaveAs(self,event):
-        #if self.State == "0":
             dlg = wx.FileDialog(self,"Save project as...",os.getcwd(),style=wx.SAVE|wx.OVERWRITE_PROMPT)
+            tmpfile = 'tmpfile'
             if dlg.ShowModal() == wx.ID_OK:
                 filename = dlg.GetPath()
 		if filename:
-	            shutil.copyfile(self.in_filename,filename) #need to change here.
+                    shutil.copyfile(self.filt_filename,tmpfile)
+	            try:
+   	                with open(filename):
+       	    	            os.remove(filename)
+	            except:
+   	                pass
+	            shutil.copyfile(self.filt_filename,filename) #need to change here.
+                    os.remove(tmpfile)
         	    self.in_filename = filename
+                    self.State = "1"
             dlg.Destroy()
+
+
+    def OnSave(self,event):
+        if self.State == 1:
+            filename = self.in_filename
+	    if filename:
+	        try:
+   	            with open(filename):
+       	                os.remove(filename)
+	        except:
+   	            pass
+	        shutil.copyfile(self.filt_filename,filename) #need to change here.
+        	self.in_filename = filename
+        else:
+            self.OnSaveAs(event)
 
     def createToolBar(self):
         self.toolbar = wx.ToolBar(self,-1,(0,0),(512,50),wx.TB_HORIZONTAL)
@@ -114,31 +137,33 @@ class PrestoFrame(wx.Frame):
     def createToolBox(self):
         self.toolbox = wx.ToolBar(self,-1,(0,100), (80,451), wx.TB_VERTICAL)
 	#self.toolbox.SetMargins( [4,4] ) 
+	tfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Thresholder', wx.Bitmap('icons/thresholder.png'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Thresholder" )
+	ifilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Inverter', wx.Bitmap('icons/inverter.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Inverter" )
         lfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Laplace', wx.Bitmap('icons/laplace.gif'),wx.NullBitmap, wx.ITEM_NORMAL, "","Laplace Filter" ) 
         gfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Gaussian', wx.Bitmap('icons/gaussian.png'),wx.NullBitmap, wx.ITEM_NORMAL, "", "Gaussian Filter" )
         sfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Sobel', wx.Bitmap('icons/sobel.png'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Sobel Filter" )
-	tfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Thresholder', wx.Bitmap('icons/thresholder.png'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Thresholder" )
-	ifilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Inverter', wx.Bitmap('icons/inverter.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Inverter" )
+	bfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Box', wx.Bitmap('icons/box.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "box" )
         self.toolbox.Realize()
-        self.Bind(wx.EVT_TOOL, self.OnLaplace, lfilt)
-        #self.Bind(wx.EVT_TOOL, self.OnGaussian, gfilt)
-        #self.Bind(wx.EVT_TOOL, self.OnSobel, sfilt)
-	#self.Bind(wx.EVT_TOOL, self.OnThresholder, tfilt)
-	#self.Bind(wx.EVT_TOOL, self.OnInverter, ifilt)
+        self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"laplace","c"), lfilt)
+        self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"gaussian","c"), gfilt)
+        self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"sobel","c"), sfilt)
+	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"thresholder","s"), tfilt)
+	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"inverter","s"), ifilt)
+	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"box","c"), bfilt)
 
     def OnAbout(self,event):
         dlg = PRestoAbout(self)
         dlg.ShowModal()
         dlg.Destroy()
 
-    def OnLaplace(self,event):
+    def OnFilter(self,event,filt_name,filt_type):
 	try:
-   	    with open('laplace_out.bmp'):
-       	    	os.remove('laplace_out.bmp')
+   	    with open(self.filt_filename):
+       	    	os.remove(self.filt_filename)
 	except:
    	    pass
-	os.system("C/./filt_image "+self.in_filename+" laplace_out.bmp");
-        img = wx.Image("laplace_out.bmp", wx.BITMAP_TYPE_ANY)
+	os.system("C/./filter "+self.in_filename+" "+self.filt_filename+" "+"bitstreams/"+filt_name+"_partial.bin"+" "+filt_type);
+        img = wx.Image(self.filt_filename, wx.BITMAP_TYPE_ANY)
         imageCtrl = wx.StaticBitmap(self.image_pane, wx.ID_ANY,wx.BitmapFromImage(img))
 
 class PRestoAbout(wx.Dialog):
