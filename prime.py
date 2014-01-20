@@ -137,7 +137,7 @@ class PrestoFrame(wx.Frame):
        	    	os.remove('laplace_out.bmp')
 	except:
    	    pass
-	os.system("./filt_image "+self.in_filename+" laplace_out.bmp");
+	os.system("C/./filt_image "+self.in_filename+" laplace_out.bmp");
         img = wx.Image("laplace_out.bmp", wx.BITMAP_TYPE_ANY)
         imageCtrl = wx.StaticBitmap(self.image_pane, wx.ID_ANY,wx.BitmapFromImage(img))
 
