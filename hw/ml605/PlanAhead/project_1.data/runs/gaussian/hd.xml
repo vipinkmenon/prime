@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<PartialReconfig Version="1" Minor="8">
+	<Partitions>
+		<Partition Name="top" Reconfigurable="FALSE" PromotedLocation="$PROMOTEDIR/Xlaplace">
+			<Partition Name="ult" CurrPRModule="gaussian" Reconfigurable="TRUE">
+				<PRModule Name="laplace" PromotedLocation="$PROMOTEDIR/Xlaplace">
+				</PRModule>
+				<PRModule Name="gaussian">
+				</PRModule>
+				<PRModule Name="sobel">
+				</PRModule>
+				<PRModule Name="inverter">
+				</PRModule>
+				<PRModule Name="thresholder">
+				</PRModule>
+				<PRModule Name="box">
+				</PRModule>
+				<PRModule Name="slicer">
+				</PRModule>
+				<PRModule Name="emboss">
+				</PRModule>
+			</Partition>
+		</Partition>
+	</Partitions>
+	<Configs>
+		<Config Name="laplace" State="INITIAL" PromotedLocation="$PROMOTEDIR/Xlaplace" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="laplace" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="gaussian" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="gaussian" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="sobel" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="sobel" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="thresholder" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="thresholder" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="inverter" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="inverter" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="box" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="box" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="slicer" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="slicer" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="emboss" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="emboss" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+	</Configs>
+</PartialReconfig>
+

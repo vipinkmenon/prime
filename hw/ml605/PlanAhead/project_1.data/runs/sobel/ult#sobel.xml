@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DARoots Version="1" Minor="26">
+  <FileSet Name="ult#sobel" Type="Reconfig" RelSrcDir="$PSRCDIR/ult#sobel">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/ult#sobel/imports/sobel/user_logic_top.ngc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/user_logic/sobel/user_logic_top.ngc"/>
+        <Attr Name="ImportTime" Val="1389938316"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/ult#sobel/imports/sobel/user_logic.ngc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/user_logic/sobel/user_logic.ngc"/>
+        <Attr Name="ImportTime" Val="1389614111"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/ult#sobel/imports/sobel/user_adpt_fifo.ngc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/user_logic/sobel/user_adpt_fifo.ngc"/>
+        <Attr Name="ImportTime" Val="1389156532"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/ult#sobel/imports/sobel/output_fifo.ngc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/user_logic/sobel/output_fifo.ngc"/>
+        <Attr Name="ImportTime" Val="1389501820"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/ult#sobel/imports/sobel/line_buffer.ngc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../src/user_logic/sobel/line_buffer.ngc"/>
+        <Attr Name="ImportTime" Val="1389512080"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+</DARoots>

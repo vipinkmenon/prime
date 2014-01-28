@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="8">
+	<Run Id="laplace" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="gaussian" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" LaunchPart="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/gaussian" LaunchTime="1390888082">
+		<File Type="MAP-PSR" Name="gaussian.psr"/>
+		<File Type="PA-EDIF" Name="gaussian.edf"/>
+		<File Type="PAR-NCD" Name="gaussian_routed.ncd"/>
+		<File Type="PA-UCF" Name="gaussian.ucf"/>
+		<File Type="PAR-PAD" Name="gaussian_routed_pad.txt"/>
+		<File Type="PAR-PAR" Name="gaussian_routed.par"/>
+		<File Type="PAR-UNR" Name="gaussian_routed.unroutes"/>
+		<File Type="BG-BIT" Name="gaussian.bit"/>
+		<File Type="BG-DRC" Name="gaussian.drc"/>
+		<File Type="PA-CONSTRSDIR" Name=".constrs"/>
+		<File Type="BG-BGN" Name="gaussian.bgn"/>
+		<File Type="TRCE-TWR" Name="gaussian.twr"/>
+		<File Type="TRCE-TWX" Name="gaussian.twx"/>
+		<File Type="XDL-XDL" Name="gaussian_routed.xdl"/>
+		<File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+		<File Type="WBT-LOG" Name="webtalk.log"/>
+		<File Type="RUN-SRCS" Name="$PDATADIR/runs/gaussian/sources.xml"/>
+		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/gaussian/constrs_in.xml"/>
+		<File Type="RUN-STRAT" Name="$PDATADIR/runs/gaussian/gaussian.psg"/>
+		<File Type="NGDB-NGD" Name="gaussian.ngd"/>
+		<File Type="NGDB-BLD" Name="gaussian.bld"/>
+		<File Type="MAP-NCD" Name="gaussian.ncd"/>
+		<File Type="MAP-PCF" Name="gaussian.pcf"/>
+		<File Type="MAP-MRP" Name="gaussian.mrp"/>
+		<File Type="MAP-MAP" Name="gaussian.map"/>
+	</Run>
+	<Run Id="sobel" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="thresholder" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="inverter" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="box" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="slicer" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+	<Run Id="emboss" Type="Ft2:EntireDesign" SrcSet="sources_1" Part="xc6vlx240tff1156-1" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off"/>
+</Runs>
+

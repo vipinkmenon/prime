@@ -1,0 +1,171 @@
+Release 14.6 Map P.68d (nt64)
+Xilinx Map Application Log File for Design 'top'
+
+Design Information
+------------------
+Command Line   : map -intstyle pa -w laplace.ngd 
+Target Device  : xc6vlx240t
+Target Package : ff1156
+Target Speed   : -1
+Mapper Version : virtex6 -- $Revision: 1.55 $
+Mapped Date    : Fri Jan 17 14:07:47 2014
+
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+Updating timing models...
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven placement...
+Total REAL time at the beginning of Placer: 1 mins 45 secs 
+Total CPU  time at the beginning of Placer: 1 mins 39 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:a3c27a2e) REAL time: 5 mins 17 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:a3c27a2e) REAL time: 5 mins 18 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:d5de3f74) REAL time: 5 mins 18 secs 
+
+Phase 4.37  Local Placement Optimization
+Phase 4.37  Local Placement Optimization (Checksum:d5de3f74) REAL time: 5 mins 18 secs 
+
+Phase 5.2  Initial Placement for Architecture Specific Features
+
+Phase 5.2  Initial Placement for Architecture Specific Features
+(Checksum:e583cf83) REAL time: 5 mins 42 secs 
+
+Phase 6.36  Local Placement Optimization
+Phase 6.36  Local Placement Optimization (Checksum:e583cf83) REAL time: 5 mins 42 secs 
+
+Phase 7.30  Global Clock Region Assignment
+Phase 7.30  Global Clock Region Assignment (Checksum:e583cf83) REAL time: 5 mins 42 secs 
+
+Phase 8.3  Local Placement Optimization
+Phase 8.3  Local Placement Optimization (Checksum:e583cf83) REAL time: 5 mins 43 secs 
+
+Phase 9.5  Local Placement Optimization
+Phase 9.5  Local Placement Optimization (Checksum:e583cf83) REAL time: 5 mins 43 secs 
+
+Phase 10.8  Global Placement
+................................
+...............................................................................................................................
+......................................................................................................................................................................................
+..................
+Phase 10.8  Global Placement (Checksum:1e980fb6) REAL time: 7 mins 5 secs 
+
+Phase 11.5  Local Placement Optimization
+Phase 11.5  Local Placement Optimization (Checksum:1e980fb6) REAL time: 7 mins 5 secs 
+
+Phase 12.18  Placement Optimization
+Phase 12.18  Placement Optimization (Checksum:81b28e31) REAL time: 8 mins 20 secs 
+
+Phase 13.5  Local Placement Optimization
+Phase 13.5  Local Placement Optimization (Checksum:81b28e31) REAL time: 8 mins 20 secs 
+
+Phase 14.34  Placement Validation
+Phase 14.34  Placement Validation (Checksum:a2d40df2) REAL time: 8 mins 20 secs 
+
+Total REAL time to Placer completion: 8 mins 21 secs 
+Total CPU  time to Placer completion: 7 mins 55 secs 
+Running post-placement packing...
+Writing output files...
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    0
+Slice Logic Utilization:
+  Number of Slice Registers:                 6,075 out of 301,440    2%
+    Number used as Flip Flops:               6,054
+    Number used as Latches:                      1
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:               20
+  Number of Slice LUTs:                      5,532 out of 150,720    3%
+    Number used as logic:                    4,797 out of 150,720    3%
+      Number using O6 output only:           3,201
+      Number using O5 output only:             263
+      Number using O5 and O6:                1,333
+      Number used as ROM:                        0
+    Number used as Memory:                       5 out of  58,400    1%
+      Number used as Dual Port RAM:              0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:             5
+        Number using O6 output only:             5
+        Number using O5 output only:             0
+        Number using O5 and O6:                  0
+    Number used exclusively as route-thrus:    730
+      Number with same-slice register load:    721
+      Number with same-slice carry load:         9
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                 2,245 out of  37,680    5%
+  Number of LUT Flip Flop pairs used:        6,836
+    Number with an unused Flip Flop:         1,920 out of   6,836   28%
+    Number with an unused LUT:               1,304 out of   6,836   19%
+    Number of fully used LUT-FF pairs:       3,612 out of   6,836   52%
+    Number of unique control sets:             247
+    Number of slice register sites lost
+      to control set restrictions:             924 out of 301,440    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                         2 out of     600    1%
+    Number of LOCed IOBs:                        2 out of       2  100%
+    Number of bonded IPADs:                     10
+      Number of LOCed IPADs:                     2 out of      10   20%
+    Number of bonded OPADs:                      8
+
+Specific Feature Utilization:
+  Number of RAMB36E1/FIFO36E1s:                 33 out of     416    7%
+    Number using RAMB36E1 only:                 33
+    Number of LOCed RAMB36E1:                   25
+    Number using FIFO36E1 only:                  0
+  Number of RAMB18E1/FIFO18E1s:                  0 out of     832    0%
+  Number of BUFG/BUFGCTRLs:                      5 out of      32   15%
+    Number used as BUFGs:                        4
+    Number used as BUFGCTRLs:                    1
+  Number of ILOGICE1/ISERDESE1s:                 0 out of     720    0%
+  Number of OLOGICE1/OSERDESE1s:                 0 out of     720    0%
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHCEs:                             0 out of     144    0%
+  Number of BUFIODQSs:                           0 out of      72    0%
+  Number of BUFRs:                               0 out of      36    0%
+  Number of CAPTUREs:                            0 out of       1    0%
+  Number of DSP48E1s:                            0 out of     768    0%
+  Number of EFUSE_USRs:                          0 out of       1    0%
+  Number of FRAME_ECCs:                          0 out of       1    0%
+  Number of GTXE1s:                              4 out of      20   20%
+    Number of LOCed GTXE1s:                      4 out of       4  100%
+  Number of IBUFDS_GTXE1s:                       1 out of      12    8%
+  Number of ICAPs:                               1 out of       2   50%
+  Number of IDELAYCTRLs:                         0 out of      18    0%
+  Number of IODELAYE1s:                          0 out of     720    0%
+  Number of MMCM_ADVs:                           1 out of      12    8%
+    Number of LOCed MMCM_ADVs:                   1 out of       1  100%
+  Number of PCIE_2_0s:                           1 out of       2   50%
+    Number of LOCed PCIE_2_0s:                   1 out of       1  100%
+  Number of STARTUPs:                            1 out of       1  100%
+  Number of SYSMONs:                             0 out of       1    0%
+  Number of TEMAC_SINGLEs:                       0 out of       4    0%
+
+Average Fanout of Non-Clock Nets:                2.90
+
+Peak Memory Usage:  938 MB
+Total REAL time to MAP completion:  8 mins 34 secs 
+Total CPU time to MAP completion:   8 mins 7 secs 
+
+Mapping completed.
+See MAP report file "laplace.mrp" for details.

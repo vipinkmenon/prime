@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<PartialReconfig Version="1" Minor="8">
+	<Partitions>
+		<Partition Name="top" Reconfigurable="FALSE" PromotedLocation="$PROMOTEDIR/Xlaplace">
+			<Partition Name="ult" CurrPRModule="sobel" Reconfigurable="TRUE">
+				<PRModule Name="laplace" PromotedLocation="$PROMOTEDIR/Xlaplace">
+				</PRModule>
+				<PRModule Name="gaussian">
+				</PRModule>
+				<PRModule Name="sobel">
+				</PRModule>
+			</Partition>
+		</Partition>
+	</Partitions>
+	<Configs>
+		<Config Name="laplace" State="PROMOTED" PromotedLocation="$PROMOTEDIR/Xlaplace" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPLEMENT">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="laplace" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="config_1" State="IMPLEMENTED" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="gaussian" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+		<Config Name="sobel" State="INITIAL" RunType="Implementation">
+			<PRConfigInst PRInst="top" State="IMPORT" ImportLocation="$PROMOTEDIR/Xlaplace">
+			</PRConfigInst>
+			<PRConfigInst PRInst="ult" PRModule="sobel" State="IMPLEMENT">
+			</PRConfigInst>
+		</Config>
+	</Configs>
+</PartialReconfig>
+
