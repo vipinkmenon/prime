@@ -6,7 +6,7 @@
 #define header_size 1078
 #define image_size (512*512)
 
-unsigned int gDATA[512*512];  //Buffer to hold the send data
+unsigned int gDATA[512*514];  //Buffer to hold the send data
 
 int main(int argc, char *argv[]) {
 
@@ -78,32 +78,19 @@ int main(int argc, char *argv[]) {
         }  
     }
     else if (strcmp(argv[4],"c")==0) {
-      printf("convolve filter");
-      rtn = fpga_send_data(USERPCIE1,(unsigned char *) file_data+sent,512,1);
-      sent += 512;
-      rtn = fpga_send_data(USERPCIE2,(unsigned char *) file_data+sent,512,1);
-      sent += 512;
-      rtn = fpga_send_data(USERPCIE3,(unsigned char *) file_data+sent,512,1);
-      sent += 512;
       while(sent < len){
+        rtn = fpga_send_data(USERPCIE1,(unsigned char *) file_data+sent,512,1);
+        rtn = fpga_send_data(USERPCIE2,(unsigned char *) file_data+sent+512,512,1);
+        rtn = fpga_send_data(USERPCIE3,(unsigned char *) file_data+sent+1024,512,1);
+        //rtn = fpga_wait_interrupt(hostuser1);
+        //rtn = fpga_wait_interrupt(hostuser2);
+        //rtn = fpga_wait_interrupt(hostuser3);
         rtn = fpga_reg_wr(0x400,0x1);
         rtn = fpga_recv_data(USERPCIE1,(unsigned char *) gDATA+recv,512,1);
 	//printf("Data receive done\n");
 	rtn = fpga_reg_wr(0x400,0x0);
 	sent += 512;
         recv += 512;
-        if(line_buff == 1){
-            rtn = fpga_send_data(USERPCIE1,(unsigned char *) file_data+sent,512,1);
-	    line_buff = 2;
-	}
-	else if(line_buff == 2){
-            rtn = fpga_send_data(USERPCIE2,(unsigned char *) file_data+sent,512,1);
-	    line_buff = 3;
-	}
-	else {
-            rtn = fpga_send_data(USERPCIE3,(unsigned char *) file_data+sent,512,1);
-	    line_buff = 1;
-	}
       }
     }
     else

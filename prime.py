@@ -143,6 +143,8 @@ class PrestoFrame(wx.Frame):
         gfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Gaussian', wx.Bitmap('icons/gaussian.png'),wx.NullBitmap, wx.ITEM_NORMAL, "", "Gaussian Filter" )
         sfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Sobel', wx.Bitmap('icons/sobel.png'),wx.NullBitmap, wx.ITEM_NORMAL,"", "Sobel Filter" )
 	bfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Box', wx.Bitmap('icons/box.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "box" )
+	rfilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Slicer', wx.Bitmap('icons/slicer.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "slicer" )
+	efilt = self.toolbox.AddLabelTool(wx.ID_ANY, 'Emboss', wx.Bitmap('icons/emboss.jpeg'),wx.NullBitmap, wx.ITEM_NORMAL,"", "emboss" )
         self.toolbox.Realize()
         self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"laplace","c"), lfilt)
         self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"gaussian","c"), gfilt)
@@ -150,6 +152,8 @@ class PrestoFrame(wx.Frame):
 	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"thresholder","s"), tfilt)
 	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"inverter","s"), ifilt)
 	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"box","c"), bfilt)
+	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"slicer","s"), rfilt)
+	self.Bind(wx.EVT_TOOL, lambda event: self.OnFilter(event,"emboss","c"), efilt)
 
     def OnAbout(self,event):
         dlg = PRestoAbout(self)
